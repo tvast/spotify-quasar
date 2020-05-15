@@ -6,8 +6,8 @@
           <q-input
             filled
             v-model="track"
-            label="Your name *"
-            hint="Name and surname"
+            label="Your track"
+            hint="Burial"
             lazy-rules
             :rules="[ val => val && val.length > 0 || 'Please type something']"
           >
@@ -18,25 +18,47 @@
         </q-form>
       </div>
     </div>
-    <div class="q-pa-md">
-      <div v-for="(bar,index) in besttracks" :key="index" class="q-pa-md">
+    <!-- <div class="q-pa-md"> -->
+      <!-- <div v-for="(bar,index) in besttracks" :key="index" class="q-pa-md">
         <q-card class="my-card">
-          <q-img :src="bar.images" style="width: 100%">
-            <div class="absolute-bottom text-subtitle1 text-center"></div>
-          </q-img>
-
-          <q-card-section>
-            <div class="text-h6">Our Changing Planet</div>
-            <div class="text-subtitle2">by John Doe</div>
-          </q-card-section>
-
-          <q-card-section class="q-pt-none">
-            <span v-for="(track,index) in bar.album.artists" :key="index">
-              <h4>{{track.name}}</h4>
+          <div v-for="(img,index) in bar.album.images" :key="index">
+            <q-img :src="img.url" style="width: 100%">
+              <div class="absolute-bottom text-subtitle1 text-center"></div>
+            </q-img>
+          </div>
+          <q-card-section v-for="(track,index) in bar.album.artists" :key="index">
+            <div class="text-h6">{{track.name}}</div>
+            <div class="text-subtitle2">
+              {{bar.name}}
               <a :href="track.external_urls.spotify">
                 <q-btn color="amber" glossy label="Listen" />
               </a>
-            </span>
+            </div>
+          </q-card-section>
+
+          <q-card-section class="q-pt-none">
+            <span></span>
+          </q-card-section>
+      </q-card>-->
+      <div v-for="(bar,index) in besttracks" :key="index" class="q-pa-md">
+        <q-card class="my-card">
+          <div v-for="(img,index) in bar.album.images"
+            :key="index" >
+          <q-parallax
+            v-if="img.width==640"
+            :src="img.url"
+            :height="150"
+          />
+          </div>
+
+          <q-card-section v-for="(track,index) in bar.album.artists" :key="index">
+            <div class="text-h6">{{track.name}}</div>
+            <div class="text-subtitle2">
+              {{bar.name}}
+              <a :href="track.external_urls.spotify">
+                <q-btn color="amber" glossy label="Listen" />
+              </a>
+            </div>
           </q-card-section>
         </q-card>
       </div>
@@ -55,10 +77,12 @@
           <div v-for="(item,index) in elements" :key="index" class="caption">
             <span v-for="(foo,index) in item.album.artists" :key="index">
               <h4>{{foo.name}}</h4>
-              <a :href="foo.external_urls.spotify">
+            
+            <a :href="foo.external_urls.spotify">
                 <q-btn color="amber" glossy label="Listen" />
               </a>
-              <q-btn @click="Onsearchartist(foo.id)" color="secondary" label="Search" />
+
+              <q-btn @click="Onsearchartist(foo.id)" flat>Search</q-btn>
             </span>
           </div>
           <template v-slot:loading>
@@ -68,6 +92,25 @@
           </template>
         </q-infinite-scroll>
       </template>
+
+      
+<!-- <div  class="caption">
+        <q-card v-for="(item,index) in elements" :key="index" class="my-card">
+      
+          <div v-for="(foo,index) in item.album.artists" :key="index" class="absolute-bottom">
+          <div class="text-h6">
+              <h4>{{foo.name}}</h4>
+            
+            
+            </div>
+          <div class="text-subtitle2"> 
+          </div>
+        
+          </q-img>
+            </q-card>
+        </div> -->
+  
+   
       <!-- <template v-if="besttracks.length"> -->
 
       <!-- </template> -->
