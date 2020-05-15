@@ -115,7 +115,7 @@ module.exports = function (/* ctx */) {
       manifest: {
         name: 'totem',
         short_name: 'totem',
-        description: 'spotify search app',
+        description: 'totem spotify',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
@@ -181,7 +181,7 @@ module.exports = function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'totem'
+        appId: 'view'
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration

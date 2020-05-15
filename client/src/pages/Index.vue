@@ -136,7 +136,9 @@ export default {
         // Default options are marked with *
 
         const response = await fetch(
-          "http://localhost:2800/search?" + "track=" + inputtracks,
+          "https://mysterious-taiga-28480.herokuapp.com/search?" +
+            "track=" +
+            inputtracks,
           {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             mode: "cors", // no-cors, *cors, same-origin
@@ -172,7 +174,9 @@ export default {
         // Default options are marked with *
 
         const response = await fetch(
-          "http://localhost:2800/searchArtist?" + "id=" + id,
+          "https://mysterious-taiga-28480.herokuapp.com/searchArtist?" +
+            "id=" +
+            id,
           {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             mode: "cors", // no-cors, *cors, same-origin

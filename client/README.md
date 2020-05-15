@@ -1,6 +1,6 @@
-# totem (totem)
+# totem (view)
 
-spotify search app
+totem spotify
 
 ## Install the dependencies
 ```bash
